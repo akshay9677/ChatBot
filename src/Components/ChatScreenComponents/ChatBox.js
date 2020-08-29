@@ -3,12 +3,12 @@ import React,{useState} from 'react';
 function ChatBox(props){
     const [text,setText] = useState('');
     function handleChange(event) {
-        const { name, value } = event.target;
+        const { value } = event.target;
     
         setText(value);
       }
     return( <div><div style={styles.chatBar}>
-          <input value={text} style={styles.chatBar.textInput} onChange={handleChange} placeholder='Say Hello'></input>
+      <input value={text} style={styles.chatBar.textInput} onChange={handleChange} placeholder='Say Hello' disabled={true}></input>
           <a href='#akshay'><div onClick={()=>{props.sendMessage(text);setText('')}}  style={styles.chatBar.send}><i  className="fas fa-reply fa-lg"></i></div></a>
           
         </div>

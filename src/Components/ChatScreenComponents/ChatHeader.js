@@ -8,7 +8,7 @@ return(<div style={styles.chatHeader}>
             <div style={styles.chatHeader.chatLogo.online}>
               </div>
               <div style={styles.chatHeader.chatLogo}>
-              <img style={{overflow: 'hidden'}} src='https://image.flaticon.com/icons/svg/838/838479.svg'></img>
+              <img alt="logo" style={{overflow: 'hidden'}} src='https://image.flaticon.com/icons/svg/838/838479.svg'></img>
               
               </div>
               <div style={styles.chatHeader.chatText}><h3>Chat Bot</h3></div>

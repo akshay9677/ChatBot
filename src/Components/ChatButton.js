@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 
 function ChatButton(props){
     
@@ -6,7 +6,7 @@ function ChatButton(props){
     return(
         <div style={{overflow: 'hidden'}}>
         <div  style={props.clickSense ? styles.btn : styles.btn2} onClick={props.onPress}>
-        <img style={{overflow: 'hidden'}} src='https://image.flaticon.com/icons/svg/838/838479.svg'></img>
+        <img alt="logos" style={{overflow: 'hidden'}} src='https://image.flaticon.com/icons/svg/838/838479.svg'></img>
         </div>
         </div>
     );

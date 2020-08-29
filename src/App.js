@@ -1,17 +1,15 @@
 import React,{useState, useEffect} from 'react';
-import { animateScroll } from 'react-scroll';
-
-import './App.css';
-import ChatButton from './Components/ChatButton';
+import axios from 'axios'
+import ChatButton from './Components/ChatButton' 
 import ChatScreen from './Components/ChatScreen'
 
 var dummyData = [
   {
-      message: 'Hello guys',
+      message: 'Hello human!!, seems like you need some guidance',
       bot: true
   },
   {
-      message: 'Hi bot',
+      message: 'Hi i am just looking',
       bot: false
   },
   {
@@ -36,9 +34,18 @@ var dummyData = [
   }
 ]
 
+var options = ["Hello", "Hello Bot", "Hai da"];
+
+
+
 function App(props) {
+  useEffect(() => {
+    axios.get("http://localhost:8080").then(({ data }) => {
+      setData(data)
+    });
+  },[]);
   const [chatScreen,setChatScreen] = useState(false);
-  const [data,setData] = useState(dummyData);
+  const [data,setData] = useState([]);
     let comp = null;
       
     function handleClick(){
@@ -53,10 +60,45 @@ function App(props) {
          return[...prevData,newData];
        })
     }
+  function handleOptions(value) {
+    let newSenderData = {
+      message: value,
+      bot:false
+    }
+
+    setData((prevData) => {
+      return [...prevData, newSenderData];
+    });
+
+    setTimeout(() => {
+      let newBotData = {
+        message: 'ya hello hello',
+        bot: true,
+      };
+
+      setData((prevData) => {
+        return [...prevData, newBotData];
+      });
+    }, 2000);
+ 
+    options = ['Va da venna', 'poda venna', 'adei']
+    
+  }
     if(chatScreen){
-        comp = ( <div className="w3-container">
-        <div className="w3-center w3-animate-right"><ChatScreen chatBodies='akshay' onSend={handleSendMessage} messages={data} closeClick={handleClick} /></div>
-      </div>)
+        comp = (
+          <div className="w3-container">
+            <div className="w3-center w3-animate-right">
+              <ChatScreen
+                chatBodies="akshay"
+                onSend={handleSendMessage}
+                messages={data}
+                closeClick={handleClick}
+                selectOptions={handleOptions}
+                options={options}
+              />
+            </div>
+          </div>
+        );
     }
   return (
     <div style={chatScreen ? styles.chatContainer : styles.chatBtn }  >
