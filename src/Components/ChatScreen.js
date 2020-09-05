@@ -1,38 +1,36 @@
-import React from 'react';
+import React from "react";
 
-import ChatHeader from './ChatScreenComponents/ChatHeader';
-import ChatBox from './ChatScreenComponents/ChatBox';
-import ChatConversation from './ChatScreenComponents/ChatConversation';
+import ChatHeader from "./ChatScreenComponents/ChatHeader";
+import ChatBox from "./ChatScreenComponents/ChatBox";
+import ChatConversation from "./ChatScreenComponents/ChatConversation";
 
-function ChatScreen(props){
-    return (
-      <div style={styles.chatBox}>
-        <ChatHeader onClicks={props.closeClick} />
-        <div>
-          <ChatConversation
-            messageData={props.messages}
-                    selectOptions={(value) => props.selectOptions(value)}
-                    options={props.options}
-          />
-        </div>
-        <ChatBox sendMessage={(value) => props.onSend(value)} />
+function ChatScreen(props) {
+  return (
+    <div style={styles.chatBox}>
+      <ChatHeader onClicks={props.closeClick} />
+      <div>
+        <ChatConversation
+          messageData={props.messages}
+          selectOptions={(value) => props.selectOptions(value)}
+          options={props.options}
+          typing={props.typing}
+        />
       </div>
-    );
+      <ChatBox sendMessage={(value) => props.onSend(value)} />
+    </div>
+  );
 }
-const styles = { 
-    chatBox: {
-        backgroundColor: 'white',
-        width: '24rem',
-        height: '38rem',
-        borderRadius: '1rem',
-        overflow: 'hidden',
-        display: 'flex',
-        flexDirection: 'column',
+const styles = {
+  chatBox: {
+    backgroundColor: "white",
+    width: "24rem",
+    height: "38rem",
+    borderRadius: "1rem",
+    overflow: "hidden",
+    display: "flex",
+    flexDirection: "column",
+    boxShadow: "6px 6px 8px #CCC",
+  },
+};
 
-        
-    },
-   
-    
-    }
-
-    export default ChatScreen;
+export default ChatScreen;

@@ -1,13 +1,21 @@
-import resolve from 'rollup-plugin-node-resolve'
-import babel from 'rollup-plugin-babel'
-import commonjs from 'rollup-plugin-commonjs'
-import json from 'rollup-plugin-json'
+import resolve from "rollup-plugin-node-resolve";
+import babel from "rollup-plugin-babel";
+import commonjs from "rollup-plugin-commonjs";
+import json from "rollup-plugin-json";
 import nodePolyfills from "rollup-plugin-node-polyfills";
+import postcss from "rollup-plugin-postcss";
 
 export default [
   {
     input: "src/App",
-    plugins: [babel(), resolve(), commonjs(), json(), nodePolyfills()],
+    plugins: [
+      babel(),
+      resolve(),
+      commonjs(),
+      json(),
+      nodePolyfills(),
+      postcss(),
+    ],
     external: ["react"],
     output: [
       {
