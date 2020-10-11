@@ -9,7 +9,11 @@ export default [
   {
     input: "src/App",
     plugins: [
-      babel(),
+      babel({
+        babelrc: true,
+        exclude: ["node_modules/**"],
+        runtimeHelpers: true,
+      }),
       resolve(),
       commonjs(),
       json(),

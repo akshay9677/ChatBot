@@ -1,21 +1,16 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 
-import Colors from "../../constants";
+import Colors from "../../constants/constants";
 
 function ChatConversation(props) {
   const divRef = useRef(null);
-  const [showoptions, setShowoptions] = useState(false);
   var dummyData = props.messageData;
-  var options = props.options;
   let typing = props.typing;
   useEffect(() => {
     divRef.current.scrollIntoView({ behavior: "smooth" });
   });
-  setTimeout(() => {
-    setShowoptions(false);
-  }, 5000);
   return (
-    <div className="convo">
+    <div className='convo'>
       <div style={styles.chatBubble}>
         <div
           style={{ width: "100%", display: "flex", flexDirection: "column" }}
@@ -36,30 +31,12 @@ function ChatConversation(props) {
           })}
           {typing && (
             <div>
-              <div className="typing-loader"></div>
+              <div className='typing-loader'></div>
             </div>
           )}
-          <div className="options-list">
-            {!showoptions &&
-              options.map((value, index) => {
-                return (
-                  <div
-                    key={index}
-                    className="options"
-                    onClick={() => {
-                      props.selectOptions(value);
-                      setShowoptions(true);
-                      // window.scrollTo(0,100)
-                    }}
-                  >
-                    {value}
-                  </div>
-                );
-              })}
-          </div>
         </div>
 
-        <div id="akshay" style={{ height: "1rem" }} ref={divRef}></div>
+        <div id='akshay' style={{ height: "1rem" }} ref={divRef}></div>
       </div>
     </div>
   );
@@ -79,7 +56,6 @@ const styles = {
       color: "white",
       textSize: "0.9rem",
       justifyContent: "flexEnd",
-      textSize: "0.9rem",
     },
     botBubble: {
       borderRadius: "0 1rem 1rem 1rem",
